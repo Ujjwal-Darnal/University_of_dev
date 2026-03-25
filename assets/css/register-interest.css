@@ -1,0 +1,140 @@
+/* Top section spacing */
+.register-top {
+    padding: 40px 0 20px;
+}
+
+/* Header container */
+.register-top-box {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: var(--white);
+    border-radius: 28px;
+    padding: 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    box-shadow: var(--shadow);
+}
+
+/* Header image */
+.register-top-box img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 14px;
+    border-radius: 20px;
+}
+
+/* Small label */
+.eyebrow {
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: 10px;
+}
+
+/* Section spacing */
+.form-section {
+    padding: 24px 0 20px;
+}
+
+/* Form layout grid */
+.form-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 24px;
+}
+
+/* Card styling */
+.form-info-card,
+.form-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(31, 92, 85, 0.08);
+}
+
+/* Benefit list */
+.benefit-list {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+/* Selected programme box */
+.selected-programme-box {
+    margin-top: 24px;
+    background: rgba(31, 92, 85, 0.06);
+    border-radius: 18px;
+    padding: 18px;
+}
+
+/* Form layout */
+.interest-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Form row */
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Inputs */
+.form-row input,
+.form-row select,
+.form-row textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 13px 14px;
+    font-size: 1rem;
+    outline: none;
+    font-family: inherit;
+    resize: vertical;
+}
+
+/* Submit button */
+.submit-btn {
+    align-self: flex-start;
+    border: none;
+    cursor: pointer;
+}
+
+/* Message box */
+.message {
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+/* Success message */
+.success-message {
+    background: #e9f8ef;
+    color: #1f6d38;
+    border: 1px solid #b9e0c4;
+}
+
+/* Error message */
+.error-message {
+    background: #fff1f1;
+    color: #a12626;
+    border: 1px solid #efc0c0;
+}
+
+/* Responsive layout */
+@media (max-width: 920px) {
+    .register-top-box,
+    .form-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .register-top-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
