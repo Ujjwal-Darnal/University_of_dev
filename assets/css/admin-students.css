@@ -1,0 +1,172 @@
+/* Top spacing for admin page header */
+.admin-page-top {
+    padding: 40px 0 20px;
+}
+
+/* Main header box with gradient background */
+.admin-page-top-box {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: var(--white);
+    border-radius: 28px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+}
+
+/* Section spacing for admin content areas */
+.admin-page-section {
+    padding: 20px 0 30px;
+}
+
+/* Shared card style for forms and tables */
+.admin-form-card,
+.admin-table-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(31, 92, 85, 0.08);
+    margin-bottom: 24px;
+}
+
+/* Section titles inside cards */
+.admin-form-card h2,
+.admin-table-card h2 {
+    color: var(--primary-dark);
+    margin-bottom: 18px;
+}
+
+/* Form layout (vertical stack) */
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Grid layout for form fields (2 columns by default) */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+/* Individual form field container */
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Labels styling */
+.form-row label {
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+/* Inputs, selects, and textareas styling */
+.form-row input,
+.form-row select,
+.form-row textarea {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 13px 14px;
+    font-size: 1rem;
+    outline: none;
+    font-family: inherit;
+}
+
+/* Row for links/buttons (wraps on small screens) */
+.admin-links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* Wrapper for table to allow horizontal scroll */
+.table-wrap {
+    overflow-x: auto;
+}
+
+/* Table base styling */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Table cells */
+.admin-table th,
+.admin-table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+/* Table header styling */
+.admin-table th {
+    color: var(--primary-dark);
+    background: rgba(31, 92, 85, 0.05);
+}
+
+/* Generic message box */
+.message {
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+/* Success message styling */
+.success-message {
+    background: #e9f8ef;
+    color: #1f6d38;
+    border: 1px solid #b9e0c4;
+}
+
+/* Error message styling */
+.error-message {
+    background: #fff1f1;
+    color: #a12626;
+    border: 1px solid #efc0c0;
+}
+
+/* Danger button (e.g., delete actions) */
+.danger-btn {
+    border-color: #b33434;
+    color: #b33434;
+}
+
+/* Danger button hover/focus state */
+.danger-btn:hover,
+.danger-btn:focus {
+    background: #b33434;
+    color: #fff;
+}
+
+/* Status badge base */
+.status-badge {
+    display: inline-block;
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+/* Published status badge */
+.status-badge.published {
+    background: #e8f7ee;
+    color: #1f7a42;
+}
+
+/* Unpublished status badge */
+.status-badge.unpublished {
+    background: #fff1f1;
+    color: #b33434;
+}
+
+/* Responsive: switch form grid to single column on smaller screens */
+@media (max-width: 920px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
