@@ -1,0 +1,156 @@
+/* Hero section spacing */
+.details-hero {
+    padding: 40px 0 20px;
+}
+
+/* Hero layout */
+.details-hero-box {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 28px;
+    align-items: center;
+    background: linear-gradient(160deg, #ffffff 0%, #eef6f4 100%);
+    border-radius: 28px;
+    padding: 34px;
+    box-shadow: var(--shadow);
+}
+
+/* Hero title */
+.details-copy h1 {
+    font-size: clamp(2rem, 5vw, 3.3rem);
+    color: var(--primary-dark);
+    margin: 12px 0;
+}
+
+/* Hero text */
+.details-copy p {
+    color: var(--muted);
+    margin-bottom: 14px;
+}
+
+/* Meta grid */
+.detail-meta {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 22px 0;
+}
+
+/* Meta card */
+.meta-card {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 18px;
+    border: 1px solid rgba(31, 92, 85, 0.08);
+}
+
+/* Action buttons */
+.detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+/* Logo container */
+.details-logo-box {
+    min-height: 320px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+/* Logo image */
+.details-logo-box img {
+    max-width: 220px;
+    max-height: 220px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 16px;
+    border-radius: 22px;
+}
+
+/* Modules section */
+.modules-section {
+    padding: 24px 0 10px;
+}
+
+/* Year block */
+.year-block {
+    margin-bottom: 34px;
+}
+
+/* Year heading */
+.year-heading {
+    color: var(--primary-dark);
+    margin-bottom: 18px;
+    font-size: 1.5rem;
+}
+
+/* Module grid */
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+/* Module card */
+.module-card {
+    background: var(--white);
+    border-radius: 22px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(31, 92, 85, 0.08);
+}
+
+/* Module header */
+.module-card-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+/* Year tag */
+.module-year-tag {
+    background: rgba(240, 164, 58, 0.18);
+    color: #8a5a10;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Shared programmes section */
+.shared-programmes {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+}
+
+/* Not found section */
+.not-found-section {
+    padding: 60px 0;
+}
+
+/* Not found card */
+.not-found-box {
+    background: var(--white);
+    padding: 36px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+/* Responsive layout */
+@media (max-width: 920px) {
+    .details-hero-box,
+    .detail-meta,
+    .module-grid {
+        grid-template-columns: 1fr;
+    }
+}
