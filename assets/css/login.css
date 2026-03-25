@@ -1,0 +1,152 @@
+/* Login section spacing */
+.portal-login-section {
+    padding: 56px 0;
+}
+
+/* Login layout grid */
+.portal-login-wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+}
+
+/* Base card styling */
+.portal-login-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(31, 92, 85, 0.08);
+}
+
+/* Brand side (left panel) */
+.portal-brand-card {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Logo container */
+.portal-brand-logo {
+    width: 92px;
+    height: 92px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 14px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+}
+
+/* Logo image */
+.portal-brand-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Small label text */
+.portal-eyebrow {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: 8px;
+}
+
+/* Headings */
+.portal-brand-card h1,
+.portal-form-card h2 {
+    margin-bottom: 12px;
+}
+
+/* Brand heading */
+.portal-brand-card h1 {
+    font-size: clamp(2rem, 4vw, 2.9rem);
+    line-height: 1.1;
+}
+
+/* Brand text */
+.portal-text {
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 460px;
+}
+
+/* Form heading */
+.portal-form-card h2 {
+    color: var(--primary-dark);
+    font-size: 1.8rem;
+}
+
+/* Form layout */
+.portal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 10px;
+}
+
+/* Form row */
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Input labels */
+.form-row label {
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+/* Input fields */
+.form-row input {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 13px 14px;
+    font-size: 1rem;
+    outline: none;
+    background: #fff;
+}
+
+/* Input focus state */
+.form-row input:focus {
+    border-color: var(--primary);
+}
+
+/* Submit button */
+.portal-submit-btn {
+    margin-top: 4px;
+    width: 100%;
+}
+
+/* Message box */
+.message {
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+/* Error message */
+.error-message {
+    background: #fff1f1;
+    color: #a12626;
+    border: 1px solid #efc0c0;
+}
+
+/* Responsive layout */
+@media (max-width: 920px) {
+    .portal-login-wrap {
+        grid-template-columns: 1fr;
+    }
+
+    .portal-login-card {
+        padding: 24px;
+    }
+}

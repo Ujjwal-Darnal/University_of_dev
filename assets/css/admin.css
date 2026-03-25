@@ -1,0 +1,100 @@
+/* Top spacing */
+.admin-top {
+    padding: 40px 0 20px;
+}
+
+/* Header container with flex layout */
+.admin-top-box {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: var(--white);
+    border-radius: 28px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    box-shadow: var(--shadow);
+}
+
+/* Section spacing */
+.admin-section {
+    padding: 24px 0 20px;
+}
+
+/* Stats grid layout */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+/* Card styling */
+.stat-card {
+    background: var(--white);
+    border-radius: 22px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    border: 1px solid rgba(31, 92, 85, 0.08);
+}
+
+/* Card heading */
+.stat-card h3 {
+    font-size: 2rem;
+    color: var(--primary-dark);
+    margin-bottom: 8px;
+}
+
+/* Admin content card */
+.admin-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(31, 92, 85, 0.08);
+}
+
+/* Table wrapper for horizontal scroll */
+.table-wrap {
+    overflow-x: auto;
+}
+
+/* Table base */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Table cells */
+.admin-table th,
+.admin-table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+}
+
+/* Responsive adjustments */
+@media (max-width: 920px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-top-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 640px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Links row layout */
+.admin-links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
