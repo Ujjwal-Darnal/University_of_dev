@@ -1,0 +1,161 @@
+/* Top section spacing */
+.manage-top {
+    padding: 40px 0 20px;
+}
+
+/* Header container */
+.manage-top-box {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: var(--white);
+    border-radius: 28px;
+    padding: 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    box-shadow: var(--shadow);
+}
+
+/* Header image */
+.manage-top-box img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 14px;
+    border-radius: 20px;
+}
+
+/* Section spacing */
+.manage-section {
+    padding: 24px 0 20px;
+}
+
+/* Card styling */
+.manage-card,
+.results-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(31, 92, 85, 0.08);
+    margin-bottom: 24px;
+}
+
+/* Card headings */
+.manage-card h2,
+.results-card h2 {
+    color: var(--primary-dark);
+    margin-bottom: 16px;
+}
+
+/* Search form layout */
+.search-form {
+    display: flex;
+    gap: 14px;
+    align-items: end;
+    flex-wrap: wrap;
+}
+
+/* Form row */
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+/* Input labels */
+.form-row label {
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+/* Input fields */
+.form-row input {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 13px 14px;
+    font-size: 1rem;
+    outline: none;
+}
+
+/* List of items */
+.interest-list {
+    display: grid;
+    gap: 18px;
+}
+
+/* Individual item */
+.interest-item {
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: center;
+}
+
+/* Item text */
+.interest-details h3 {
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+}
+
+.interest-details p {
+    margin-bottom: 6px;
+    color: var(--muted);
+}
+
+/* Action form */
+.withdraw-form {
+    flex-shrink: 0;
+}
+
+/* Danger button */
+.danger-btn {
+    border-color: #b33434;
+    color: #b33434;
+}
+
+.danger-btn:hover,
+.danger-btn:focus {
+    background: #b33434;
+    color: #fff;
+}
+
+/* Message box */
+.message {
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+/* Success message */
+.success-message {
+    background: #e9f8ef;
+    color: #1f6d38;
+    border: 1px solid #b9e0c4;
+}
+
+/* Error message */
+.error-message {
+    background: #fff1f1;
+    color: #a12626;
+    border: 1px solid #efc0c0;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .manage-top-box,
+    .interest-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .withdraw-form {
+        width: 100%;
+    }
+}
