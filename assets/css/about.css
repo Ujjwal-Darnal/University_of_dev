@@ -1,0 +1,94 @@
+/* Hero section spacing */
+.about-hero {
+    padding: 40px 0 20px;
+}
+
+/* Main hero container with gradient background and flex layout */
+.about-hero-box {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: var(--white);
+    border-radius: 28px;
+    padding: 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    box-shadow: var(--shadow);
+}
+
+/* Logo styling inside hero section */
+.about-hero-box img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 14px;
+    border-radius: 20px;
+}
+
+/* Section spacing for main content */
+.about-section {
+    padding: 24px 0;
+}
+
+/* Grid layout for about cards */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* Individual card styling */
+.about-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(31, 92, 85, 0.08);
+}
+
+/* Card headings */
+.about-card h2 {
+    color: var(--primary-dark);
+    margin-bottom: 12px;
+}
+
+/* Card text */
+.about-card p {
+    color: var(--muted);
+}
+
+/* Highlight section spacing */
+.about-highlight {
+    padding: 0 0 20px;
+}
+
+/* Highlight box styling */
+.highlight-box {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: var(--shadow);
+    border-left: 6px solid var(--accent);
+}
+
+/* Highlight heading */
+.highlight-box h2 {
+    color: var(--primary-dark);
+    margin-bottom: 12px;
+}
+
+/* Highlight text */
+.highlight-box p {
+    color: var(--muted);
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 920px) {
+    .about-hero-box,
+    .about-grid {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
