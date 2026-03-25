@@ -1,0 +1,173 @@
+/* Top section spacing for admin pages */
+.admin-page-top {
+    padding: 40px 0 20px;
+}
+
+/* Header box with gradient background */
+.admin-page-top-box {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: var(--white);
+    border-radius: 28px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+}
+
+/* Title spacing inside header */
+.admin-page-top-box h1 {
+    margin-bottom: 8px;
+}
+
+/* Main content section spacing */
+.admin-page-section {
+    padding: 20px 0 30px;
+}
+
+/* Card styling for forms and tables */
+.admin-form-card,
+.admin-table-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(31, 92, 85, 0.08);
+    margin-bottom: 24px;
+}
+
+/* Section headings inside cards */
+.admin-form-card h2,
+.admin-table-card h2 {
+    color: var(--primary-dark);
+    margin-bottom: 18px;
+}
+
+/* Form layout (vertical stacking) */
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Grid layout for grouped form inputs */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+/* Individual form row styling */
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Label styling */
+.form-row label {
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+/* Input, select, and textarea styling */
+.form-row input,
+.form-row select,
+.form-row textarea {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 13px 14px;
+    font-size: 1rem;
+    outline: none;
+    font-family: inherit;
+}
+
+/* Wrapper for responsive tables */
+.table-wrap {
+    overflow-x: auto;
+}
+
+/* Table base styling */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Table cell styling */
+.admin-table th,
+.admin-table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+/* Table header styling */
+.admin-table th {
+    color: var(--primary-dark);
+    background: rgba(31, 92, 85, 0.05);
+}
+
+/* Expandable edit section trigger */
+.edit-box summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+/* Inline edit form layout */
+.inline-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    min-width: 240px;
+}
+
+/* Danger button styling (e.g. delete actions) */
+.danger-btn {
+    border-color: #b33434;
+    color: #b33434;
+}
+
+/* Hover effect for danger buttons */
+.danger-btn:hover,
+.danger-btn:focus {
+    background: #b33434;
+    color: #fff;
+}
+
+/* Row of admin action links/buttons */
+.admin-links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* General message box styling */
+.message {
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+/* Success message styling */
+.success-message {
+    background: #e9f8ef;
+    color: #1f6d38;
+    border: 1px solid #b9e0c4;
+}
+
+/* Error message styling */
+.error-message {
+    background: #fff1f1;
+    color: #a12626;
+    border: 1px solid #efc0c0;
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 920px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
