@@ -38,7 +38,7 @@ $programmes = getProgrammes($pdo, null, $selectedLevel, $searchTerm);
                         and discover modules and academic staff.
                     </p>
                 </div>
-                <img src="<?php echo BASE_URL; ?>/assets/images/logo.png" alt="University of Dev logo">
+                <img src="<?php echo BASE_URL; ?>/assets/images/stdsss.jpeg" alt="students logo">
             </div>
         </div>
     </section>

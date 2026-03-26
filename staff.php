@@ -28,7 +28,7 @@ $staffMembers = getAllStaff($pdo);
                         teaching and learning across University of Dev programmes.
                     </p>
                 </div>
-                <img src="<?php echo BASE_URL; ?>/assets/images/logo.png" alt="University of Dev logo">
+                <img src="<?php echo BASE_URL; ?>/assets/images/stdsss.jpeg" alt="University of Dev logo">
             </div>
         </div>
     </section>
