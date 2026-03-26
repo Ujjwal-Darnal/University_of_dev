@@ -1,183 +1,145 @@
 <?php
-// Load config, database, helper functions, and admin auth
+// Include core configuration, database connection, helper functions, and authentication
 require_once __DIR__ . '/../includes/config.php';
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/functions.php';
 require_once __DIR__ . '/../includes/auth.php';
 
-// Restrict access to admin users only
+// Ensure only admin users can access this file
 requireAdmin();
 
-// Set page title and CSS file
-$pageTitle = 'Manage Programmes | ' . SITE_NAME;
-$pageCSS = 'admin-management.css';
+// Only allow POST requests (form submissions)
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: ' . BASE_URL . '/admin/programmes.php');
+    exit;
+}
 
-// Get data needed for programme management
-$levels = getLevels($pdo);
-$staffOptions = getStaffOptions($pdo);
-$programmes = getAllProgrammesAdmin($pdo);
+// Determine which action is being performed (add, edit, delete)
+$actionType = $_POST['action_type'] ?? '';
 
-// Get status message from URL
-$message = $_GET['message'] ?? '';
-?>
+try {
 
-<?php include __DIR__ . '/../includes/header.php'; ?>
-<?php include __DIR__ . '/../includes/navbar.php'; ?>
+   
+       // ADD NEW PROGRAMME
+     
+    if ($actionType === 'add') {
 
-<main id="main-content">
-    <!-- Page heading -->
-    <section class="admin-page-top">
-        <div class="container">
-            <div class="admin-page-top-box">
-                <h1>Manage Programmes</h1>
-                <p>Add, edit, and delete programmes from the system.</p>
-            </div>
-        </div>
-    </section>
+        // Get and sanitize form input values
+        $programmeName = trim($_POST['programme_name'] ?? '');
+        $levelId = (int)($_POST['level_id'] ?? 0);
+        $programmeLeaderId = (int)($_POST['programme_leader_id'] ?? 0);
+        $description = trim($_POST['description'] ?? '');
+        $image = trim($_POST['image'] ?? '');
 
-    <!-- Programme management section -->
-    <section class="admin-page-section">
-        <div class="container">
-            <?php if ($message === 'added'): ?>
-                <div class="message success-message">Programme added successfully.</div>
-            <?php elseif ($message === 'updated'): ?>
-                <div class="message success-message">Programme updated successfully.</div>
-            <?php elseif ($message === 'deleted'): ?>
-                <div class="message success-message">Programme deleted successfully.</div>
-            <?php elseif ($message === 'error'): ?>
-                <div class="message error-message">Something went wrong. Please try again.</div>
-            <?php endif; ?>
+        // Validate required fields
+        if ($programmeName === '' || $levelId <= 0 || $programmeLeaderId <= 0 || $description === '') {
+            throw new Exception('Missing required fields.');
+        }
 
-            <div class="admin-form-card">
-                <h2>Add New Programme</h2>
+        // Prepare SQL query to insert new programme
+        $stmt = $pdo->prepare("
+            INSERT INTO Programmes (
+                ProgrammeName,
+                LevelID,
+                ProgrammeLeaderID,
+                Description,
+                Image
+            ) VALUES (
+                :programme_name,
+                :level_id,
+                :programme_leader_id,
+                :description,
+                :image
+            )
+        ");
 
-                <!-- Form to add a new programme -->
-                <form action="<?php echo BASE_URL; ?>/actions/programme-action.php" method="POST" class="admin-form">
-                    <input type="hidden" name="action_type" value="add">
+        // Execute query with bound parameters
+        $stmt->execute([
+            ':programme_name' => $programmeName,
+            ':level_id' => $levelId,
+            ':programme_leader_id' => $programmeLeaderId,
+            ':description' => $description,
+            ':image' => $image !== '' ? $image : null // Allow null if no image provided
+        ]);
 
-                    <div class="form-grid">
-                        <div class="form-row">
-                            <label for="programme_name">Programme Name</label>
-                            <input type="text" id="programme_name" name="programme_name" required maxlength="255">
-                        </div>
+        // Redirect with success message
+        header('Location: ' . BASE_URL . '/admin/programmes.php?message=added');
+        exit;
+    }
 
-                        <div class="form-row">
-                            <label for="level_id">Level</label>
-                            <select id="level_id" name="level_id" required>
-                                <option value="">Select level</option>
-                                <?php foreach ($levels as $level): ?>
-                                    <option value="<?php echo (int)$level['LevelID']; ?>">
-                                        <?php echo e($level['LevelName']); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
+    /* 
+       EDIT EXISTING PROGRAMME */
+    if ($actionType === 'edit') {
 
-                        <div class="form-row">
-                            <label for="programme_leader_id">Programme Leader</label>
-                            <select id="programme_leader_id" name="programme_leader_id" required>
-                                <option value="">Select staff member</option>
-                                <?php foreach ($staffOptions as $staff): ?>
-                                    <option value="<?php echo (int)$staff['StaffID']; ?>">
-                                        <?php echo e($staff['Name']); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
+        // Get and sanitize input values
+        $programmeId = (int)($_POST['programme_id'] ?? 0);
+        $programmeName = trim($_POST['programme_name'] ?? '');
+        $levelId = (int)($_POST['level_id'] ?? 0);
+        $programmeLeaderId = (int)($_POST['programme_leader_id'] ?? 0);
+        $description = trim($_POST['description'] ?? '');
+        $image = trim($_POST['image'] ?? '');
 
-                        <div class="form-row">
-                            <label for="image">Image Path</label>
-                            <input type="text" id="image" name="image" maxlength="255" placeholder="optional image path">
-                        </div>
-                    </div>
+        // Validate required fields
+        if ($programmeId <= 0 || $programmeName === '' || $levelId <= 0 || $programmeLeaderId <= 0 || $description === '') {
+            throw new Exception('Missing required fields.');
+        }
 
-                    <div class="form-row">
-                        <label for="description">Description</label>
-                        <textarea id="description" name="description" rows="5" required maxlength="1000"></textarea>
-                    </div>
+        // Prepare SQL query to update programme
+        $stmt = $pdo->prepare("
+            UPDATE Programmes
+            SET
+                ProgrammeName = :programme_name,
+                LevelID = :level_id,
+                ProgrammeLeaderID = :programme_leader_id,
+                Description = :description,
+                Image = :image
+            WHERE ProgrammeID = :programme_id
+        ");
 
-                    <button type="submit" class="btn">Add Programme</button>
-                </form>
-            </div>
+        // Execute update query
+        $stmt->execute([
+            ':programme_name' => $programmeName,
+            ':level_id' => $levelId,
+            ':programme_leader_id' => $programmeLeaderId,
+            ':description' => $description,
+            ':image' => $image !== '' ? $image : null,
+            ':programme_id' => $programmeId
+        ]);
 
-            <div class="admin-table-card">
-                <h2>Existing Programmes</h2>
+        // Redirect with success message
+        header('Location: ' . BASE_URL . '/admin/programmes.php?message=updated');
+        exit;
+    }
 
-                <div class="table-wrap">
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Programme</th>
-                                <th>Level</th>
-                                <th>Leader</th>
-                                <th>Description</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Loop through all existing programmes -->
-                            <?php foreach ($programmes as $programme): ?>
-                                <tr>
-                                    <td><?php echo (int)$programme['ProgrammeID']; ?></td>
-                                    <td><?php echo e($programme['ProgrammeName']); ?></td>
-                                    <td><?php echo e($programme['LevelName']); ?></td>
-                                    <td><?php echo e($programme['ProgrammeLeader']); ?></td>
-                                    <td><?php echo e(shortText($programme['Description'], 80)); ?></td>
-                                    <td>
-                                        <details class="edit-box">
-                                            <summary>Edit</summary>
+    // DELETE PROGRAMME 
+    if ($actionType === 'delete') {
 
-                                            <!-- Form to edit an existing programme -->
-                                            <form action="<?php echo BASE_URL; ?>/actions/programme-action.php" method="POST" class="inline-edit-form">
-                                                <input type="hidden" name="action_type" value="edit">
-                                                <input type="hidden" name="programme_id" value="<?php echo (int)$programme['ProgrammeID']; ?>">
+        // Get programme ID
+        $programmeId = (int)($_POST['programme_id'] ?? 0);
 
-                                                <input type="text" name="programme_name" value="<?php echo e($programme['ProgrammeName']); ?>" required>
-                                                <select name="level_id" required>
-                                                    <?php foreach ($levels as $level): ?>
-                                                        <option value="<?php echo (int)$level['LevelID']; ?>" <?php echo $programme['LevelName'] === $level['LevelName'] ? 'selected' : ''; ?>>
-                                                            <?php echo e($level['LevelName']); ?>
-                                                        </option>
-                                                    <?php endforeach; ?>
-                                                </select>
+        // Validate ID
+        if ($programmeId <= 0) {
+            throw new Exception('Invalid programme ID.');
+        }
 
-                                                <select name="programme_leader_id" required>
-                                                    <?php foreach ($staffOptions as $staff): ?>
-                                                        <option value="<?php echo (int)$staff['StaffID']; ?>" <?php echo $programme['ProgrammeLeader'] === $staff['Name'] ? 'selected' : ''; ?>>
-                                                            <?php echo e($staff['Name']); ?>
-                                                        </option>
-                                                    <?php endforeach; ?>
-                                                </select>
+        // Prepare delete query
+        $stmt = $pdo->prepare("DELETE FROM Programmes WHERE ProgrammeID = :programme_id");
 
-                                                <input type="text" name="image" value="<?php echo e($programme['Image']); ?>" placeholder="image path">
-                                                <textarea name="description" rows="4" required><?php echo e($programme['Description']); ?></textarea>
+        // Execute delete
+        $stmt->execute([
+            ':programme_id' => $programmeId
+        ]);
 
-                                                <button type="submit" class="btn">Save</button>
-                                            </form>
-                                        </details>
+        // Redirect with success message
+        header('Location: ' . BASE_URL . '/admin/programmes.php?message=deleted');
+        exit;
+    }
 
-                                        <!-- Form to delete a programme -->
-                                        <form action="<?php echo BASE_URL; ?>/actions/programme-action.php" method="POST" onsubmit="return confirm('Delete this programme?');">
-                                            <input type="hidden" name="action_type" value="delete">
-                                            <input type="hidden" name="programme_id" value="<?php echo (int)$programme['ProgrammeID']; ?>">
-                                            <button type="submit" class="btn-outline danger-btn">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
+    // If action type is not recognised
+    throw new Exception('Invalid action type.');
 
-                <!-- Quick links to related admin pages -->
-                <div class="admin-links-row">
-                    <a href="<?php echo BASE_URL; ?>/admin/assign-modules.php" class="btn">Assign Modules to Programmes</a>
-                    <a href="<?php echo BASE_URL; ?>/admin/dashboard.php" class="btn-outline">Back to Dashboard</a>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
+} catch (Throwable $e) {
 
-<?php include __DIR__ . '/../includes/footer.php'; ?>
+    // Display detailed error (useful for debugging)
+    die('Programme action error: ' . $e->getMessage());
+}
