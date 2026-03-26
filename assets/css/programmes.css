@@ -1,9 +1,7 @@
-/* Hero section spacing */
 .page-hero {
     padding: 40px 0 20px;
 }
 
-/* Hero container */
 .page-hero-box {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary));
     color: var(--white);
@@ -16,7 +14,6 @@
     box-shadow: var(--shadow);
 }
 
-/* Hero image */
 .page-hero-box img {
     width: 120px;
     height: 120px;
@@ -26,25 +23,25 @@
     border-radius: 20px;
 }
 
-/* Small label */
 .eyebrow {
     font-weight: 700;
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 10px;
 }
 
-/* Hero title */
 .page-hero-box h1 {
     font-size: clamp(2rem, 5vw, 3.5rem);
     margin-bottom: 10px;
 }
 
-/* Filters section */
+.page-hero-box p {
+    max-width: 700px;
+}
+
 .filters-section {
     padding: 24px 0;
 }
 
-/* Filters form layout */
 .filters-form {
     background: var(--white);
     padding: 24px;
@@ -56,14 +53,17 @@
     align-items: end;
 }
 
-/* Form group */
 .form-group {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-/* Inputs and selects */
+.form-group label {
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
 .form-group input,
 .form-group select {
     width: 100%;
@@ -75,21 +75,35 @@
     background: #fff;
 }
 
-/* Filter actions */
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary);
+}
+
 .filter-actions {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
 }
 
-/* Programmes grid */
+.programmes-list-section {
+    padding: 18px 0 20px;
+}
+
+.left-align {
+    text-align: left;
+}
+
+.left-align p {
+    margin-left: 0;
+}
+
 .programme-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
 }
 
-/* Programme card */
 .programme-card-full {
     background: var(--white);
     border-radius: 24px;
@@ -100,7 +114,6 @@
     flex-direction: column;
 }
 
-/* Programme image container */
 .programme-card-image {
     height: 220px;
     background: linear-gradient(135deg, #2b6e66, #92b8b2);
@@ -108,12 +121,40 @@
     place-items: center;
 }
 
-/* Programme card content */
+.programme-card-image img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 12px;
+    border-radius: 20px;
+}
+
 .programme-card-body {
     padding: 24px;
 }
 
-/* Programme actions */
+.programme-badge {
+    display: inline-block;
+    background: rgba(31, 92, 85, 0.08);
+    color: var(--primary-dark);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.programme-card-body h3 {
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+}
+
+.programme-card-body p {
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
 .programme-card-actions {
     display: flex;
     flex-wrap: wrap;
@@ -121,7 +162,6 @@
     margin-top: 14px;
 }
 
-/* Empty state */
 .empty-state {
     background: var(--white);
     border-radius: 24px;
@@ -130,7 +170,11 @@
     box-shadow: var(--shadow);
 }
 
-/* Responsive layout */
+.empty-state h3 {
+    color: var(--primary-dark);
+    margin-bottom: 8px;
+}
+
 @media (max-width: 920px) {
     .page-hero-box,
     .filters-form {

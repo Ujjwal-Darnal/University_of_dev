@@ -34,7 +34,7 @@ $programmes = getProgrammes($pdo, 3);
             </div>
 
             <div class="hero-image">
-                <img src="<?php echo BASE_URL; ?>/assets/images/stds.jpeg" alt="students picture">
+                <img src="<?php echo BASE_URL; ?>/assets/images/stdsss.jpeg" alt="students picture">
             </div>
         </div>
     </section>

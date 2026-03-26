@@ -27,7 +27,7 @@ $pageCSS = 'about.css';
                 </div>
 
                 <!-- Logo image using BASE_URL -->
-                <img src="<?php echo BASE_URL; ?>/assets/images/logo.png" alt="University of Dev logo">
+                <img src="<?php echo BASE_URL; ?>/assets/images/stdsss.jpeg" alt="University of Dev logo">
             </div>
         </div>
     </section>
